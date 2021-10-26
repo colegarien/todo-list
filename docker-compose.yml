@@ -6,10 +6,17 @@ services:
             - "8080:8080"
         volumes:
             - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
-            - ./app:/app
+            - ./src:/src
     php:
         build:
             context: .
             dockerfile: PHP.Dockerfile
         volumes:
-            - ./app:/app
+            - ./src:/src
+            - ./vendor:/vendor
+    dev:
+        build:
+            context: .
+            dockerfile: Dev.Dockerfile
+        volumes:
+            - ./:/workspace

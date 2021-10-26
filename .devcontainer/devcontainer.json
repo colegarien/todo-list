@@ -1,9 +1,8 @@
 {
   "dockerComposeFile": "../docker-compose.yml",
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/workspace",
   "shutdownAction": "stopCompose",
-  "service": "php",
+  "service": "dev",
 
   "extensions": ["felixfbecker.php-pack", "felixfbecker.php-debug", "ikappas.composer", "emallin.phpunit"],
-  "forwardPorts": [8080]
 }
