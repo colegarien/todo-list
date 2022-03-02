@@ -16,22 +16,23 @@ class TodoListTest extends TestCase
         $todoList = new TodoList();
         $todoList->add("item 1");
         self::assertFalse($todoList->isEmpty());
-        // todo: need to assert that we get the expected item when we try to retrieve the added item with this test or another one
     }
 
     public function testRetrieveList() {
         $todoList = new TodoList();
         $todoList->add("item 1");
         $todoList->add('item 2');
+        $i = 0;
         foreach ($todoList as $key => $value) {
-            self::assertSame(0, $key);
-            self::assertSame("item 1", $value);
+            self::assertSame($i, $key);
+            self::assertSame("item " . $i + 1, $value);
+            $i++;
         }
+        //todo figure out how to debug Unit Test
+        //todo figure out if auto complete is possible
+    }
 
-        self::assertFalse(false); //todo figure out how we will retrive items
-        //todo figure out how to debug
-
-
+    public function testRemoveFromList() {
 
     }
 }

@@ -8,6 +8,11 @@ class TodoList implements Iterator
     private $position = 0;
     private $list = [];
 
+    public function __construct()
+    {
+        $this->position = 0;
+    }
+
     public function add(string $item): void
     {
         $this->list[] = $item; 
@@ -35,11 +40,11 @@ class TodoList implements Iterator
 
     public function valid() :bool
     {
-        return array_key_exists($this->position, $this->list);
+        return isset($this->list[$this->position]);
     }
 
     public function rewind() :void
     {
-        --$this->position;
+        $this->position = 0;
     }
 }
