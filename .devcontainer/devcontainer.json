@@ -4,5 +4,12 @@
   "shutdownAction": "stopCompose",
   "service": "dev",
 
-  "extensions": ["felixfbecker.php-pack", "felixfbecker.php-debug", "ikappas.composer", "emallin.phpunit", "bmewburn.vscode-intelephense-client"],
+  "extensions": [
+	"felixfbecker.php-pack",
+	"felixfbecker.php-debug",
+	"ikappas.composer",
+	"emallin.phpunit",
+	"bmewburn.vscode-intelephense-client",
+	"xdebug.php-debug"
+],
 }
