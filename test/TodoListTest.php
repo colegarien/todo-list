@@ -29,11 +29,20 @@ class TodoListTest extends TestCase
             self::assertSame("item " . $i + 1, $value);
             $i++;
         }
-        //todo figure out how to debug Unit Test
         //todo figure out if auto complete is possible
     }
 
     public function testRemoveFromList() {
+        $todoList = new TodoList();
+        $todoList->add("item 1");
+        $todoList->add('item 2');
 
+        $index = 1;
+        $todoList->remove($index);
+        //TODO removes item from the list and decrement indexes of items after this one
+        //TODO implement get 
+        //TODO reconsider not using arrays
+
+        $this->assertEquals(1,count($todoList));
     }
 }

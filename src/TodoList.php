@@ -1,9 +1,10 @@
 <?php
 namespace Todo;
 
+use Countable;
 use Iterator;
 
-class TodoList implements Iterator
+class TodoList implements Iterator, Countable
 {
     private $position = 0;
     private $list = [];
@@ -17,6 +18,12 @@ class TodoList implements Iterator
     {
         $this->list[] = $item; 
     }
+
+    public function remove(int $index): void
+    {
+        unset($this->list[$index]);
+    }
+
 
     public function isEmpty(): bool
     {
@@ -46,5 +53,10 @@ class TodoList implements Iterator
     public function rewind() :void
     {
         $this->position = 0;
+    }
+
+    public function count(): int
+    {
+        return count($this->list);
     }
 }
