@@ -1,18 +1,9 @@
 <?php
 namespace Todo;
 
-use Countable;
-use Iterator;
-
-class TodoList implements Iterator, Countable
+class TodoList
 {
-    private $position = 0;
     private $list = [];
-
-    public function __construct()
-    {
-        $this->position = 0;
-    }
 
     public function add(string $item): void
     {
@@ -22,37 +13,20 @@ class TodoList implements Iterator, Countable
     public function remove(int $index): void
     {
         unset($this->list[$index]);
+        $this->list = array_values($this->list);
     }
 
+    public function get(int $index): string
+    {
+        if(!isset($this->list[$index]))
+            throw new \Exception('Item Does Not Exist'); // TODO custom exceptions instead?
+
+        return $this->list[$index];
+    }
 
     public function isEmpty(): bool
     {
         return empty($this->list);
-    }
-
-    public function current()
-    {
-        return $this->list[$this->position];
-    }
-
-    public function next() :void
-    {
-        ++$this->position; 
-    }
-
-    public function key()
-    {
-        return $this->position;
-    }
-
-    public function valid() :bool
-    {
-        return isset($this->list[$this->position]);
-    }
-
-    public function rewind() :void
-    {
-        $this->position = 0;
     }
 
     public function count(): int

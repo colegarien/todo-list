@@ -23,13 +23,9 @@ class TodoListTest extends TestCase
         $todoList = new TodoList();
         $todoList->add("item 1");
         $todoList->add('item 2');
-        $i = 0;
-        foreach ($todoList as $key => $value) {
-            self::assertSame($i, $key);
-            self::assertSame("item " . $i + 1, $value);
-            $i++;
-        }
-        //todo figure out if auto complete is possible
+
+        self::assertSame("item 1", $todoList->get(0));
+        self::assertSame("item 2", $todoList->get(1));
     }
 
     public function testRemoveFromList() {
@@ -37,12 +33,17 @@ class TodoListTest extends TestCase
         $todoList->add("item 1");
         $todoList->add('item 2');
 
-        $index = 1;
+        $index = 0;
         $todoList->remove($index);
-        //TODO removes item from the list and decrement indexes of items after this one
-        //TODO implement get 
-        //TODO reconsider not using arrays
 
-        $this->assertEquals(1,count($todoList));
+        self::assertEquals(1,$todoList->count());
+        self::assertEquals("item 2",$todoList->get(0));
+    }
+
+    public function testGetNonexistantItem() {
+        $this->expectException(\Exception::class);
+        
+        $todoList = new TodoList();
+        $todoList->get(0);
     }
 }
