@@ -46,4 +46,14 @@ class TodoListTest extends TestCase
         $todoList = new TodoList();
         $todoList->get(0);
     }
+
+
+    // TODO let's write some Behat tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // TODO figure out the interface for how we wanna iterate/apply/something across the whole list
+    //    - do we do like LINQ, have select/any/contains/etc etc
+    //    - do we just have a powerful like "map" function
+    //    - or something else
+
+
+
 }
