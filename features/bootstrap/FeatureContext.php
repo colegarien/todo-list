@@ -3,12 +3,14 @@
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Todo\TodoList;
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext implements Context
 {
+    protected $todoList;
     /**
      * Initializes context.
      *
@@ -18,30 +20,31 @@ class FeatureContext implements Context
      */
     public function __construct()
     {
+        $this->todoList = new TodoList();
+    }
+  
+    /**
+     * @When I add :item to the list
+     */
+    public function iAddToTheList($item)
+    {
+        $this->todoList->add($item);
+    }
+    
+    /**
+     * @Then I should have :count items in my Todo List
+     */
+    public function iShouldHaveItemsInMyTodoList($count)
+    {
+        return $this->todoList->count() == $count;
     }
 
     /**
-     * @Then I should have :arg1 product in the basket
+     * @Then item :index value should be :value
      */
-    public function iShouldHaveProductInTheBasket($arg1)
+    public function itemValueShouldBe($index, $value)
     {
-        throw new Exception();
-    }
-
-    /**
-     * @Then the overall basket price should be £:arg1
-     */
-    public function theOverallBasketPriceShouldBePs($arg1)
-    {
-        throw new Exception();
-    }
-
-    /**
-     * @Then I should have :arg1 products in the basket
-     */
-    public function iShouldHaveProductsInTheBasket($arg1)
-    {
-        throw new Exception();
+        return $this->todoList->get($index) == $value;
     }
 
      /**
@@ -49,16 +52,6 @@ class FeatureContext implements Context
      */
     public function weHaveAnEmptyTodoList()
     {
-        //todo: Add plugin for creating feature file text
-        //todo: Finish this scenario we are working on
-        throw new Exception();
-    }
-
-    /**
-     * @When I add the :arg1 to the basket
-     */
-    public function iAddTheToTheBasket($arg1)
-    {
-        throw new Exception();
+        return $this->todoList->isEmpty();
     }
 }
