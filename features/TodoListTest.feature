@@ -1,29 +1,14 @@
-Feature: Product basket
-  In order to buy products
-  As a customer
-  I need to be able to put interesting products into a basket
+Feature: Todo List
+  In order to view todo list items
+  As a productive person
+  I need to be able to look at items in my list
 
-  Rules:
-  - VAT is 20%
-  - Delivery for basket under £10 is £3
-  - Delivery for basket over £10 is £2
-
-  Scenario: Buying a single product under £10
-    Given there is a "Sith Lord Lightsaber", which costs £5
-    When I add the "Sith Lord Lightsaber" to the basket
-    Then I should have 1 product in the basket
-    And the overall basket price should be £9
-
-  Scenario: Buying a single product over £10
-    Given there is a "Sith Lord Lightsaber", which costs £15
-    When I add the "Sith Lord Lightsaber" to the basket
-    Then I should have 1 product in the basket
-    And the overall basket price should be £20
-
-  Scenario: Buying two products over £10
-    Given there is a "Sith Lord Lightsaber", which costs £10
-    And there is a "Jedi Lightsaber", which costs £5
-    When I add the "Sith Lord Lightsaber" to the basket
-    And I add the "Jedi Lightsaber" to the basket
-    Then I should have 2 products in the basket
-    And the overall basket price should be £20
+  Scenario: Showing all items added to Todo List
+    Given we have an empty Todo List
+    When I add 1 to the list
+    And I add 2 to the list
+    And I add 3 to the list
+    Then I should have 3 items in my Todo List
+    And item 1 value should be 1
+    And item 2 value should be 2
+    And item 3 value should be 3

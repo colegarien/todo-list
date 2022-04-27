@@ -45,10 +45,12 @@ class FeatureContext implements Context
     }
 
      /**
-     * @Given there is a :arg1, which costs £:arg2
+     * @Given we have an empty Todo List
      */
-    public function thereIsAWhichCostsPs($arg1, $arg2)
+    public function weHaveAnEmptyTodoList()
     {
+        //todo: Add plugin for creating feature file text
+        //todo: Finish this scenario we are working on
         throw new Exception();
     }
 

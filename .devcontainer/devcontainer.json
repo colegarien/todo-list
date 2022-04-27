@@ -10,6 +10,7 @@
 	"ikappas.composer",
 	"emallin.phpunit",
 	"bmewburn.vscode-intelephense-client",
-	"xdebug.php-debug"
+	"xdebug.php-debug",
+	"alexkrechik.cucumberautocomplete"
 ],
 }
