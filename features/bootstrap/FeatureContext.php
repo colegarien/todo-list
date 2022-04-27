@@ -4,11 +4,12 @@ use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Todo\TodoList;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context
+class FeatureContext extends TestCase implements Context
 {
     protected $todoList;
     /**
@@ -24,6 +25,14 @@ class FeatureContext implements Context
     }
   
     /**
+     * @Given we have an empty Todo List
+     */
+    public function weHaveAnEmptyTodoList()
+    {
+        $this->todoList = new TodoList();
+    }
+
+    /**
      * @When I add :item to the list
      */
     public function iAddToTheList($item)
@@ -36,7 +45,7 @@ class FeatureContext implements Context
      */
     public function iShouldHaveItemsInMyTodoList($count)
     {
-        return $this->todoList->count() == $count;
+        $this->assertEquals($this->todoList->count(),$count);
     }
 
     /**
@@ -44,14 +53,6 @@ class FeatureContext implements Context
      */
     public function itemValueShouldBe($index, $value)
     {
-        return $this->todoList->get($index) == $value;
-    }
-
-     /**
-     * @Given we have an empty Todo List
-     */
-    public function weHaveAnEmptyTodoList()
-    {
-        return $this->todoList->isEmpty();
+        $this->assertTrue($this->todoList->get($index) == $value);
     }
 }
