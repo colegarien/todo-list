@@ -12,3 +12,12 @@ Feature: Todo List
     And item 0 value should be 1
     And item 1 value should be 2
     And item 2 value should be 3
+
+  Scenario: Deleting items from Todo List
+    Given we have an empty Todo List
+    When I add 1 to the list
+    And I add 2 to the list
+    And I add 3 to the list
+    And I delete the item 1 from Todo List
+    Then item 0 value should be 1
+    And item 1 value should be 3

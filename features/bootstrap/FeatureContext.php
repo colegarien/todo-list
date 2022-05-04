@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
 class FeatureContext extends TestCase implements Context
 {
     protected $todoList;
+  
     /**
      * Initializes context.
      *
@@ -21,7 +22,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function __construct()
     {
-        $this->todoList = new TodoList();
+        $this->todoList = new TodoList(); //Separate out the FeatureContext for multiple feature
     }
   
     /**
@@ -38,6 +39,14 @@ class FeatureContext extends TestCase implements Context
     public function iAddToTheList($item)
     {
         $this->todoList->add($item);
+    }
+
+    /**
+     * @When I delete the item :index from Todo List
+     */
+    public function iDeleteTheItemFromTodoList($index)
+    {
+        $this->todoList->remove($index);
     }
     
     /**
