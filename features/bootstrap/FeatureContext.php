@@ -54,7 +54,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function iShouldHaveItemsInMyTodoList($count)
     {
-        $this->assertEquals($this->todoList->count(),$count);
+        $this->assertEquals($this->todoList->count(), $count);
     }
 
     /**
@@ -63,5 +63,21 @@ class FeatureContext extends TestCase implements Context
     public function itemValueShouldBe($index, $value)
     {
         $this->assertTrue($this->todoList->get($index) == $value);
+    }
+
+        /**
+     * @When I mark item :arg1 as complete
+     */
+    public function iMarkItemAsComplete($arg1)
+    {
+        throw new PendingException();
+    }
+
+    /**
+     * @Then Todo List is complete
+     */
+    public function todoListIsComplete()
+    {
+        throw new PendingException();
     }
 }
