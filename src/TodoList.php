@@ -5,18 +5,18 @@ class TodoList
 {
     private $list = [];
 
-    public function add(string $item): void
+    public function addItem(string $item): void
     {
         $this->list[] = $item; 
     }
 
-    public function remove(int $index): void
+    public function removeItem(int $index): void
     {
         unset($this->list[$index]);
         $this->list = array_values($this->list);
     }
 
-    public function get(int $index): string
+    public function getItems(int $index): string
     {
         if(!isset($this->list[$index]))
             throw new \Exception('Item Does Not Exist'); 
@@ -32,8 +32,18 @@ class TodoList
         return empty($this->list);
     }
 
-    public function count(): int
+    public function countItems(): int
     {
         return count($this->list);
+    }
+
+    public function completeItem($index): void //TODO: implement this
+    {
+        return;
+    }
+
+    public function isComplete(): bool //TODO: implement this
+    {
+        return true;
     }
 }

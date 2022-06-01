@@ -19,45 +19,49 @@ class TodoListTest extends TestCase
     }
 
     public function testAddToList() {
-        $this->todoList->add("item 1");
+        $this->todoList->addItem("item 1");
         self::assertFalse($this->todoList->isEmpty());
     }
     
     public function testRetrieveList() {
-        $this->todoList->add("item 1");
-        $this->todoList->add('item 2');
+        $this->todoList->addItem("item 1");
+        $this->todoList->addItem('item 2');
 
-        self::assertSame("item 1", $this->todoList->get(0));
-        self::assertSame("item 2", $this->todoList->get(1));
+        self::assertSame("item 1", $this->todoList->getItems(0));
+        self::assertSame("item 2", $this->todoList->getItems(1));
     }
 
     public function testRemoveFromList() {
-        $this->todoList->add("item 1");
-        $this->todoList->add('item 2');
+        $this->todoList->addItem("item 1");
+        $this->todoList->addItem('item 2');
 
         $index = 0;
-        $this->todoList->remove($index);
+        $this->todoList->removeItem($index);
 
-        self::assertEquals(1, $this->todoList->count());
-        self::assertEquals("item 2", $this->todoList->get(0));
+        self::assertEquals(1, $this->todoList->countItems());
+        self::assertEquals("item 2", $this->todoList->getItems(0));
     }
 
     public function testGetNonexistantItem() {
         $this->expectException(\Exception::class);
-        $this->todoList->get(0);
+        $this->todoList->getItems(0);
     }
 
     //todo: figure out how to refactor names because we need that terribly
     //todo: then refactor to todoList->removeItem .. ->addItem ... ->completeItem, then finish the test below 
-    // public function testCompleteTodoList() {
-    //     $this->todoList->add("item 1");
-    //     $this->todoList->add('item 2');
+    
+    public function testCompleteTodoList() { //TODO: fix this test
+        $this->todoList->addItem("item 1");
+        $this->todoList->addItem('item 2');
 
-    //     $this->todoList->completeItem(0);
-    //     $this->todoList->completeItem(1);
+        $this->todoList->completeItem(0);
+        self::assertFalse($this->todoList->isComplete());
+        
+        $this->todoList->completeItem(1);
+        self::assertTrue($this->todoList->isComplete());
+    }
 
-    //     self::assertTrue($this->todoList->isComplete());
-    // }
+    
 
     // TODO let's write some Behat tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // TODO figure out the interface for how we wanna iterate/apply/something across the whole list

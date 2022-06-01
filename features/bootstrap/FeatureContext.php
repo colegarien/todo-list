@@ -38,7 +38,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function iAddToTheList($item)
     {
-        $this->todoList->add($item);
+        $this->todoList->addItem($item);
     }
 
     /**
@@ -46,7 +46,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function iDeleteTheItemFromTodoList($index)
     {
-        $this->todoList->remove($index);
+        $this->todoList->removeItem($index);
     }
     
     /**
@@ -54,7 +54,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function iShouldHaveItemsInMyTodoList($count)
     {
-        $this->assertEquals($this->todoList->count(), $count);
+        $this->assertEquals($this->todoList->countItems(), $count);
     }
 
     /**
@@ -62,7 +62,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function itemValueShouldBe($index, $value)
     {
-        $this->assertTrue($this->todoList->get($index) == $value);
+        $this->assertTrue($this->todoList->getItems($index) == $value);
     }
 
         /**
@@ -70,7 +70,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function iMarkItemAsComplete($arg1)
     {
-        throw new PendingException();
+        throw new Exception();
     }
 
     /**
@@ -78,6 +78,6 @@ class FeatureContext extends TestCase implements Context
      */
     public function todoListIsComplete()
     {
-        throw new PendingException();
+        throw new Exception();
     }
 }

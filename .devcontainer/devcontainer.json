@@ -11,6 +11,7 @@
 	"emallin.phpunit",
 	"bmewburn.vscode-intelephense-client",
 	"xdebug.php-debug",
-	"alexkrechik.cucumberautocomplete"
-],
+	"alexkrechik.cucumberautocomplete",
+	"st-pham.php-refactor-tool"
+]
 }
