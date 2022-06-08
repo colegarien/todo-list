@@ -62,7 +62,7 @@ class FeatureContext extends TestCase implements Context
      */
     public function itemValueShouldBe($index, $value)
     {
-        $this->assertTrue($this->todoList->getItems($index) == $value);
+        $this->assertTrue($this->todoList->getItem($index) == $value);
     }
 
         /**

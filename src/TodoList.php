@@ -3,6 +3,9 @@ namespace Todo;
 
 class TodoList
 {
+    /**
+     * Item[]
+     */
     private $list = [];
 
     public function addItem(string $item): void
@@ -16,7 +19,7 @@ class TodoList
         $this->list = array_values($this->list);
     }
 
-    public function getItems(int $index): string
+    public function getItem(int $index): string
     {
         if(!isset($this->list[$index]))
             throw new \Exception('Item Does Not Exist'); 
