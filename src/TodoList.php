@@ -4,49 +4,53 @@ namespace Todo;
 class TodoList
 {
     /**
-     * Item[]
+     * @var Item[]
      */
-    private $list = [];
+    private $items = [];
 
-    public function addItem(string $item): void
+    public function addItem(string $itemDescription): void
     {
-        $this->list[] = $item; 
+        $item = new Item();
+        $item->description = $itemDescription;
+        $this->items[] = $item;
     }
 
     public function removeItem(int $index): void
     {
-        unset($this->list[$index]);
-        $this->list = array_values($this->list);
+        unset($this->items[$index]);
+        $this->items = array_values($this->items);
     }
 
-    public function getItem(int $index): string
+    public function getItemDescription(int $index): string
     {
-        if(!isset($this->list[$index]))
+        if(!isset($this->items[$index]))
             throw new \Exception('Item Does Not Exist'); 
 
-        return $this->list[$index];
+        return $this->items[$index]->description;
     }
-
-    //TODO add complete/uncomplete feature
-
 
     public function isEmpty(): bool
     {
-        return empty($this->list);
+        return empty($this->items);
     }
 
     public function countItems(): int
     {
-        return count($this->list);
+        return count($this->items);
     }
 
-    public function completeItem($index): void //TODO: implement this
+    public function completeItem(int $index): void
     {
-        return;
+        $this->items[$index]->isComplete = true;
     }
 
-    public function isComplete(): bool //TODO: implement this
+    public function isComplete(): bool
     {
+        foreach($this->items as $item) {
+            if (!$item->isComplete) {
+                return false;
+            }
+        }
         return true;
     }
 }

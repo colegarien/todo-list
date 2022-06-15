@@ -26,9 +26,9 @@ class FeatureContext extends TestCase implements Context
     }
   
     /**
-     * @Given we have an empty Todo List
+     * @Given I have an empty Todo List
      */
-    public function weHaveAnEmptyTodoList()
+    public function iHaveAnEmptyTodoList()
     {
         $this->todoList = new TodoList();
     }
@@ -62,15 +62,15 @@ class FeatureContext extends TestCase implements Context
      */
     public function itemValueShouldBe($index, $value)
     {
-        $this->assertTrue($this->todoList->getItem($index) == $value);
+        $this->assertTrue($this->todoList->getItemDescription($index) == $value);
     }
 
         /**
-     * @When I mark item :arg1 as complete
+     * @When I mark item :index as complete
      */
-    public function iMarkItemAsComplete($arg1)
+    public function iMarkItemAsComplete($index)
     {
-        throw new Exception();
+        $this->todoList->completeItem($index);
     }
 
     /**
@@ -78,6 +78,6 @@ class FeatureContext extends TestCase implements Context
      */
     public function todoListIsComplete()
     {
-        throw new Exception();
+        $this->assertTrue($this->todoList->isComplete());
     }
 }
