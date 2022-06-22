@@ -57,7 +57,17 @@ class TodoListTest extends TestCase
         self::assertTrue($this->todoList->isComplete());
     }
 
-    // todo: implement uncomplete functionality
+    public function testUncompleteTodoList() {
+        $this->todoList->addItem("item 1");
+        $this->todoList->addItem('item 2');
+
+        $this->todoList->completeItem(0);
+        $this->todoList->completeItem(1);
+        self::assertTrue($this->todoList->isComplete());
+
+        $this->todoList->uncompleteItem(0);
+        self::assertFalse($this->todoList->isComplete());   
+    }
 
     // TODO let's write some Behat tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }

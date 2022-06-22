@@ -44,6 +44,11 @@ class TodoList
         $this->items[$index]->isComplete = true;
     }
 
+    public function uncompleteItem(int $index): void
+    {
+        $this->items[$index]->isComplete = false;
+    }
+
     public function isComplete(): bool
     {
         foreach($this->items as $item) {

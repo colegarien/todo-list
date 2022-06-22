@@ -80,4 +80,20 @@ class FeatureContext extends TestCase implements Context
     {
         $this->assertTrue($this->todoList->isComplete());
     }
+
+     /**
+     * @When I mark item :index as uncomplete
+     */
+    public function iMarkItemAsUncomplete($index)
+    {
+        $this->todoList->uncompleteItem($index);
+    }
+
+    /**
+     * @Then Todo List is uncomplete
+     */
+    public function todoListIsUncomplete()
+    {
+        $this->assertFalse($this->todoList->isComplete());
+    }
 }
