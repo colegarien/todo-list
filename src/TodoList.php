@@ -1,5 +1,8 @@
 <?php
+
 namespace Todo;
+
+use Exception;
 
 class TodoList
 {
@@ -23,8 +26,8 @@ class TodoList
 
     public function getItemDescription(int $index): string
     {
-        if(!isset($this->items[$index]))
-            throw new \Exception('Item Does Not Exist'); 
+        if (!isset($this->items[$index]))
+            throw new \Exception('Item Does Not Exist');
 
         return $this->items[$index]->description;
     }
@@ -41,7 +44,11 @@ class TodoList
 
     public function completeItem(int $index): void
     {
-        $this->items[$index]->isComplete = true;
+        if (array_key_exists($index, $this->items)) {
+            $this->items[$index]->isComplete = true;
+        } else {
+            throw new Exception("Item can't be marked complete");
+        }
     }
 
     public function uncompleteItem(int $index): void
@@ -51,7 +58,7 @@ class TodoList
 
     public function isComplete(): bool
     {
-        foreach($this->items as $item) {
+        foreach ($this->items as $item) {
             if (!$item->isComplete) {
                 return false;
             }

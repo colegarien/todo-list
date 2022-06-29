@@ -1,5 +1,7 @@
 <?php
 namespace Todo\Test\PHPUnitTests;
+
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 use Todo\TodoList;
@@ -8,6 +10,10 @@ class TodoListTest extends TestCase
 {
     private TodoList $todoList;
 
+    //TODO check for more exceptional cases.
+    //TODO split the FeatureContext - cody reseaching + custom yaml
+    //TODO Discuss whether to implement UI or Persistance 
+    
     protected function setUp(): void
     {
         $this->todoList = new TodoList();
@@ -57,6 +63,17 @@ class TodoListTest extends TestCase
         self::assertTrue($this->todoList->isComplete());
     }
 
+    public function testCompleteTodoList_withNonExistingIndex() {
+       
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage("Item can't be marked complete");
+        $this->todoList->addItem("item 1");
+        $this->todoList->addItem('item 2');
+        
+        $this->todoList->completeItem(2);
+        self::assertTrue($this->todoList->isComplete());
+    }
+
     public function testUncompleteTodoList() {
         $this->todoList->addItem("item 1");
         $this->todoList->addItem('item 2');
@@ -68,6 +85,4 @@ class TodoListTest extends TestCase
         $this->todoList->uncompleteItem(0);
         self::assertFalse($this->todoList->isComplete());   
     }
-
-    // TODO let's write some Behat tests!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
