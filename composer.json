@@ -12,7 +12,8 @@
 
     "autoload-dev": {
         "psr-4": {
-            "Todo\\Test\\" : "test/"
+            "Todo\\Test\\" : "test/",
+            "Todo\\Behat\\" : "features/bootstrap/"
         }
     }
 }

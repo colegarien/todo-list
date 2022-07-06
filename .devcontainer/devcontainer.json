@@ -12,6 +12,7 @@
 	"bmewburn.vscode-intelephense-client",
 	"xdebug.php-debug",
 	"alexkrechik.cucumberautocomplete",
-	"st-pham.php-refactor-tool"
+	"st-pham.php-refactor-tool",
+	"hoovercj.vscode-power-mode"
 ]
 }

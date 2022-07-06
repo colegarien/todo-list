@@ -1,0 +1,7 @@
+default:
+  suites:
+    default:
+      paths: ['%paths.base%/features']
+      contexts:
+        - \Todo\Behat\FeatureContext
+# TODO resolve this, this get's contexts autoloading but we need to get the features running
