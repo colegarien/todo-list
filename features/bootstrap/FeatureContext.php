@@ -1,6 +1,6 @@
 <?php
 
-//namespace Todo\Behat;
+namespace Todo\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
