@@ -2,4 +2,5 @@ default:
   suites:
     default:
       paths: [/%paths.base%]
-      contexts: [\Todo\Behat\FeatureContext]
+      contexts: [\Todo\Behat\FeatureContext, \Todo\Behat\ExampleMultipleContext]
+    

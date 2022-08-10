@@ -1,7 +1,5 @@
 <?php
 
-namespace Todo\Behat;
-
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
@@ -26,14 +24,14 @@ class FeatureContext extends TestCase implements Context
     {
         $this->todoList = new TodoList(); //Separate out the FeatureContext for multiple feature
     }
-  
+
     /**
-     * @Given I have an empty Todo List
-     */
-    public function iHaveAnEmptyTodoList()
-    {
-        $this->todoList = new TodoList();
-    }
+    * @Given I have an empty Todo List
+    */
+   public function iHaveAnEmptyTodoList()
+   {
+       $this->todoList = new TodoList();
+   }
 
     /**
      * @When I add :item to the list
