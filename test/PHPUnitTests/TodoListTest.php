@@ -10,9 +10,10 @@ class TodoListTest extends TestCase
 {
     private TodoList $todoList;
 
-    //TODO check for more exceptional cases.
-    //TODO split the FeatureContext - cody reseaching + custom yaml
-    //TODO Discuss whether to implement UI or Persistance 
+    //TODO Discuss whether to implement UI or Persistance - Going with UI
+    //TODO Later question - Do we go API route first? or straight up console first?
+    //TODO We want to make our ideal UI with Mock Data for now to just concern ourselves with UI stuff to get the ball rolling, then hook in Business Logic
+    //TODO We will start with simple console app to get done quickly, then web
     
     protected function setUp(): void
     {
