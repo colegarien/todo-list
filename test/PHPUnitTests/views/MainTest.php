@@ -4,6 +4,7 @@ namespace Todo\Test\PHPUnitTests\Views;
 
 use PHPUnit\Framework\TestCase;
 use Todo\Views\Main;
+use Todo\Views\OutputString;
 
 class MainTest extends TestCase 
 {
@@ -11,9 +12,9 @@ class MainTest extends TestCase
     public function testPrintWelcomeMessage(): void
     {
         $outputPrinter = new OutputPrinterSpy();
-        $main = new Main();
+        $main = new Main($outputPrinter);
         $main->run();
 
-        $this->assertFalse(false);
+        self::assertSame(OutputString::OUTPUT_MESSAGE, $outputPrinter->output);
     }    
 }

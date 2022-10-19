@@ -2,9 +2,16 @@
 namespace Todo\Views;
 
 class Main {
+    private OutputInterface $output;
+
+    public function __construct(OutputInterface $output)
+    {
+        $this->output = $output;
+    }
+
     public function run(): void
     {
-
+        $this->output->print(OutputString::OUTPUT_MESSAGE);
     }
 }
 
